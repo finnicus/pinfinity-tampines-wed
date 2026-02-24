@@ -1,1 +1,1 @@
-# Pinfinity Bowling League Rostering
+# Bowling League Rostering
