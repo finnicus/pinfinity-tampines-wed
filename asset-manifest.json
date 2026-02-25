@@ -1,17 +1,18 @@
 {
   "files": {
     "main.css": "/bowling-league-roster/static/css/main.126873eb.css",
-    "main.js": "/bowling-league-roster/static/js/main.955c91f3.js",
+    "main.js": "/bowling-league-roster/static/js/main.b0074988.js",
     "static/js/453.94023574.chunk.js": "/bowling-league-roster/static/js/453.94023574.chunk.js",
     "static/media/pinfinity.png": "/bowling-league-roster/static/media/pinfinity.fc8f640e7f483f57d954.png",
     "static/media/tampines.png": "/bowling-league-roster/static/media/tampines.fc8f640e7f483f57d954.png",
+    "static/media/pinpals.png": "/bowling-league-roster/static/media/pinpals.990ff9110172544dd2b4.png",
     "index.html": "/bowling-league-roster/index.html",
     "main.126873eb.css.map": "/bowling-league-roster/static/css/main.126873eb.css.map",
-    "main.955c91f3.js.map": "/bowling-league-roster/static/js/main.955c91f3.js.map",
+    "main.b0074988.js.map": "/bowling-league-roster/static/js/main.b0074988.js.map",
     "453.94023574.chunk.js.map": "/bowling-league-roster/static/js/453.94023574.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.126873eb.css",
-    "static/js/main.955c91f3.js"
+    "static/js/main.b0074988.js"
   ]
 }
