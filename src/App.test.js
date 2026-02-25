@@ -10,5 +10,5 @@ jest.mock('./Api', () => ({
 test('renders loading state', () => {
   fetchData.mockImplementation(() => new Promise(() => {}));
   render(<App />);
-  expect(screen.getByText(/loading bowlers/i)).toBeInTheDocument();
+  expect(screen.getByText(/loading data/i)).toBeInTheDocument();
 });

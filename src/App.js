@@ -1,14 +1,26 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import TimeAgo from 'react-timeago';
 import { getAppConfigFromURL } from './Api';
 import Summary from './Summary';
 import pinfinityLogo from './pinfinity.png';
 import tampinesLogo from './tampines.png';
+import pinpalsLogo from './pinpals.png';
 import './App.css';
 
 const LOGO_BY_LEAGUE = {
   pinfinity: pinfinityLogo,
   tampines: tampinesLogo,
+  sgcc: pinpalsLogo,
+};
+
+const setDocumentIcon = (href, rel) => {
+  let iconTag = document.querySelector(`link[rel="${rel}"]`);
+  if (!iconTag) {
+    iconTag = document.createElement('link');
+    iconTag.setAttribute('rel', rel);
+    document.head.appendChild(iconTag);
+  }
+  iconTag.setAttribute('href', href);
 };
 
 function App() {
@@ -17,9 +29,11 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [lastUpdated, setLastUpdated] = useState(null);
 
-  if (loading) {
-    return <div className="loading-screen"><div className="spinner" /> Loading data...</div>;
-  }
+  useEffect(() => {
+    document.title = appConfig.title;
+    setDocumentIcon(logoSrc, 'icon');
+    setDocumentIcon(logoSrc, 'apple-touch-icon');
+  }, [appConfig.title, logoSrc]);
 
   return (
     <div className="app">
@@ -36,6 +50,7 @@ function App() {
       </header>
 
       <main className="main-content">
+        {loading && <div className="loading-screen"><div className="spinner" /> Loading data...</div>}
         <Summary
           appConfig={appConfig}
           onLoadingChange={setLoading}
