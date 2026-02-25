@@ -7,6 +7,7 @@ import Suggestion from './Suggestion';
 import pinfinityLogo from './pinfinity.png';
 import tampinesLogo from './tampines.png';
 import pinpalsLogo from './pinpals.png';
+import genericLogo from './generic.png';
 import './App.css';
 
 const LOGO_BY_LEAGUE = {
@@ -28,7 +29,7 @@ const setDocumentIcon = (href, rel) => {
 function App() {
   const initialConfig = useMemo(() => getAppConfigFromURL(window.location.search), []);
   const [appConfig, setAppConfig] = useState(initialConfig);
-  const logoSrc = LOGO_BY_LEAGUE[appConfig.logo] || pinfinityLogo;
+  const logoSrc = LOGO_BY_LEAGUE[appConfig.logo] || genericLogo;
   const [loading, setLoading] = useState(true);
   const [lastUpdated, setLastUpdated] = useState(null);
 
