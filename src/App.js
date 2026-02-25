@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import TimeAgo from 'react-timeago';
-import { getAppConfigFromURL } from './Api';
+import { fetchAppConfigFromURL, getAppConfigFromURL } from './Api';
 import Summary from './Summary';
 import Roster from './Roster';
 import Suggestion from './Suggestion';
@@ -26,10 +26,32 @@ const setDocumentIcon = (href, rel) => {
 };
 
 function App() {
-  const appConfig = useMemo(() => getAppConfigFromURL(window.location.search), []);
+  const initialConfig = useMemo(() => getAppConfigFromURL(window.location.search), []);
+  const [appConfig, setAppConfig] = useState(initialConfig);
   const logoSrc = LOGO_BY_LEAGUE[appConfig.logo] || pinfinityLogo;
   const [loading, setLoading] = useState(true);
   const [lastUpdated, setLastUpdated] = useState(null);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    const hydrateConfig = async () => {
+      try {
+        const resolvedConfig = await fetchAppConfigFromURL(window.location.search);
+        if (!cancelled) {
+          setAppConfig(resolvedConfig);
+        }
+      } catch (error) {
+        console.error('Error loading app config:', error);
+      }
+    };
+
+    hydrateConfig();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   useEffect(() => {
     document.title = appConfig.title;

@@ -6,27 +6,10 @@ const BOWLERS_SHEET = '1560652729';
 const ROSTERS_SHEET = '2108495623';
 const SETTINGS_SHEET = '1970364122';
 
-const LEAGUE_CONFIG = {
-  tampines: {
-    title: 'Pinfinity Tampines Wednesday',
-    logo: 'tampines',
-    useDummyData: false,
-  },
-  tessenjohn: {
-    title: 'Pinfinity Tessenjohn Tuesday',
-    logo: 'tessenjohn',
-    useDummyData: false,
-  },
-  sgcc: {
-    title: 'SGCC Pin Pals Wednesday',
-    logo: 'sgcc',
-    useDummyData: false,
-  },
-  dummy: {
-    title: 'Pinfinity Dummy',
-    logo: 'pinfinity',
-    useDummyData: true,
-  },
+const DUMMY_LEAGUE = {
+  title: 'Pinfinity Dummy',
+  logo: 'pinfinity',
+  useDummyData: true,
 };
 
 const DEFAULT_LEAGUE = 'dummy';
@@ -119,22 +102,45 @@ export const getAppConfigFromURL = (search = '') => {
   const query = new URLSearchParams(search);
   const leagueParam = (query.get('league') || '').trim().toLowerCase();
   const viewParam = (query.get('view') || DEFAULT_VIEW).trim().toLowerCase();
-  const league = LEAGUE_CONFIG[leagueParam] ? leagueParam : DEFAULT_LEAGUE;
-  const leagueSettings = LEAGUE_CONFIG[league];
+  const league = leagueParam || DEFAULT_LEAGUE;
+  const isDummyLeague = league === DEFAULT_LEAGUE;
+  const titleFallback = isDummyLeague
+    ? DUMMY_LEAGUE.title
+    : league.charAt(0).toUpperCase() + league.slice(1);
 
   return {
     league,
     view: viewParam || DEFAULT_VIEW,
-    title: leagueSettings.title,
-    logo: leagueSettings.logo || 'pinfinity',
-    useDummyData: Boolean(leagueSettings.useDummyData),
+    title: titleFallback,
+    logo: isDummyLeague ? DUMMY_LEAGUE.logo : league,
+    useDummyData: isDummyLeague,
     bowlersSheetUrl: BOWLERS_SHEET_URL,
     rostersSheetUrl: ROSTERS_SHEET_URL,
+    settingsSheetUrl: SETTINGS_SHEET_URL,
     refreshInterval: REFRESH_INTERVAL,
   };
 };
 
 export const getAppConfigFromUrl = getAppConfigFromURL;
+
+export const fetchAppConfigFromURL = async (search = '') => {
+  const baseConfig = getAppConfigFromURL(search);
+  if (baseConfig.useDummyData) {
+    return baseConfig;
+  }
+
+  const { data: settingsData } = await fetchSettingsData(baseConfig);
+  if (!settingsData) {
+    return baseConfig;
+  }
+
+  return {
+    ...baseConfig,
+    title: settingsData.title || baseConfig.title,
+    logo: baseConfig.league,
+    useDummyData: false,
+  };
+};
 
 export const fetchSettingsData = async (config) => {
   const response = await axios.get(config.settingsSheetUrl || SETTINGS_SHEET_URL);
