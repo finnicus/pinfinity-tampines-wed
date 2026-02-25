@@ -72,6 +72,11 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 - On a new day, `minor` resets to `1` automatically.
 - Manual trigger (without deploy): `npm run version:auto`.
 
+## Data Source Notes
+
+- `Average` and `Hdcp` are sourced directly from the sheet data and are no longer computed in the app.
+- Ensure the source sheet includes `Average` and `Hdcp` columns (case-insensitive keys are supported).
+
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
