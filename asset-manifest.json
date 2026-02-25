@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/pinfinity-tampines-wed/static/css/main.6cdbba06.css",
-    "main.js": "/pinfinity-tampines-wed/static/js/main.bfee759f.js",
+    "main.css": "/pinfinity-tampines-wed/static/css/main.74bcd4d7.css",
+    "main.js": "/pinfinity-tampines-wed/static/js/main.66453d33.js",
     "static/js/453.afb852b2.chunk.js": "/pinfinity-tampines-wed/static/js/453.afb852b2.chunk.js",
     "static/media/pinfinity.png": "/pinfinity-tampines-wed/static/media/pinfinity.fc8f640e7f483f57d954.png",
     "index.html": "/pinfinity-tampines-wed/index.html",
-    "main.6cdbba06.css.map": "/pinfinity-tampines-wed/static/css/main.6cdbba06.css.map",
-    "main.bfee759f.js.map": "/pinfinity-tampines-wed/static/js/main.bfee759f.js.map",
+    "main.74bcd4d7.css.map": "/pinfinity-tampines-wed/static/css/main.74bcd4d7.css.map",
+    "main.66453d33.js.map": "/pinfinity-tampines-wed/static/js/main.66453d33.js.map",
     "453.afb852b2.chunk.js.map": "/pinfinity-tampines-wed/static/js/453.afb852b2.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6cdbba06.css",
-    "static/js/main.bfee759f.js"
+    "static/css/main.74bcd4d7.css",
+    "static/js/main.66453d33.js"
   ]
 }
