@@ -154,7 +154,9 @@
 
   .data-table th:nth-child(1),
   .data-table td:nth-child(1) {
-    width: 32%;
+    width: 26%;
+    padding-left: 3px;
+    padding-right: 3px;
   }
 
   .data-table th:nth-child(2),
@@ -165,7 +167,7 @@
   .data-table td:nth-child(4),
   .data-table th:nth-child(5),
   .data-table td:nth-child(5) {
-    width: 17%;
+    width: 18.5%;
     text-align: center;
   }
 
