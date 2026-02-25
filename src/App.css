@@ -136,7 +136,7 @@
 /* Responsive design */
 @media (max-width: 768px) {
   .table-container {
-    padding: 0 8px;
+    padding: 0 12px 0 8px;
   }
 
   .data-table {
@@ -204,5 +204,44 @@
 
   .site-logo {
     height: 64px;
+  }
+}
+
+@media (max-width: 430px) {
+  .table-container {
+    padding: 0 16px 0 8px;
+  }
+
+  .data-table th,
+  .data-table td {
+    padding: 1px 2px;
+  }
+
+  .data-table th {
+    font-size: 10px;
+    line-height: 1;
+  }
+
+  .data-table td {
+    font-size: 10px;
+    line-height: 1;
+  }
+
+  .data-table th:nth-child(1),
+  .data-table td:nth-child(1) {
+    width: 22%;
+    padding-left: 1px;
+    padding-right: 1px;
+  }
+
+  .data-table th:nth-child(2),
+  .data-table td:nth-child(2),
+  .data-table th:nth-child(3),
+  .data-table td:nth-child(3),
+  .data-table th:nth-child(4),
+  .data-table td:nth-child(4),
+  .data-table th:nth-child(5),
+  .data-table td:nth-child(5) {
+    width: 19.5%;
   }
 }
