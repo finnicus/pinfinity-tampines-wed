@@ -1,8 +1,14 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
+import { fetchData } from './Api';
 
-test('renders learn react link', () => {
+jest.mock('./Api', () => ({
+  ...jest.requireActual('./Api'),
+  fetchData: jest.fn(),
+}));
+
+test('renders loading state', () => {
+  fetchData.mockImplementation(() => new Promise(() => {}));
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  expect(screen.getByText(/loading bowlers/i)).toBeInTheDocument();
 });
