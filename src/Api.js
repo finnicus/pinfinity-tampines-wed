@@ -7,8 +7,8 @@ const ROSTERS_SHEET = '2108495623';
 const SETTINGS_SHEET = '1970364122';
 
 const DUMMY_LEAGUE = {
-  title: 'Pinfinity Dummy',
-  logo: 'pinfinity',
+  title: 'Generic League',
+  logo: 'generic',
   useDummyData: true,
 };
 

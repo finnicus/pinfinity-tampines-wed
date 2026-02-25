@@ -4,16 +4,16 @@ import { fetchAppConfigFromURL, getAppConfigFromURL } from './Api';
 import Summary from './Summary';
 import Roster from './Roster';
 import Suggestion from './Suggestion';
-import pinfinityLogo from './tessenjohn.png';
+import tessenjohnLogo from './tessenjohn.png';
 import tampinesLogo from './tampines.png';
-import pinpalsLogo from './sgcc.png';
+import sgccLogo from './sgcc.png';
 import genericLogo from './generic.png';
 import './App.css';
 
 const LOGO_BY_LEAGUE = {
-  pinfinity: pinfinityLogo,
+  tessenjohn : tessenjohnLogo,
   tampines: tampinesLogo,
-  sgcc: pinpalsLogo,
+  sgcc: sgccLogo,
 };
 
 const setDocumentIcon = (href, rel) => {
