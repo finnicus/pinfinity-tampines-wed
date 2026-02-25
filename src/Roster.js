@@ -139,7 +139,7 @@ function Roster({ appConfig }) {
                   return (
                     <tr className="roster-item" key={`${card.date}-${entry.name}-${entry.isReserve ? 'reserve' : 'main'}`}>
                       <td className="roster-item-name">{displayName}</td>
-                      <td className="roster-item-hdcp">[{stats.hdcp}]</td>
+                      <td className="roster-item-hdcp"><span className="roster-hdcp-badge">H {stats.hdcp}</span></td>
                       <td className={`roster-item-status ${statusClassName}`} aria-label={isConfirmed ? 'confirmed' : 'pending response'}>
                         <span className={`roster-status-icon ${statusClassName}`}>{statusIcon}</span>
                       </td>
