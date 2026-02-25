@@ -87,7 +87,7 @@ function App() {
         }
         
         return {
-          bowler: `${statusIcon}${bowlerName}`,
+          bowler: `${statusIcon}\u00A0\u00A0${bowlerName}`,
           gender: normalizedGender,
           active,
           hdcp,

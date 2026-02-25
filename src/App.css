@@ -97,7 +97,7 @@
 
 .data-table th,
 .data-table td {
-  padding: 4px 6px;
+  padding: 2px 4px;
   text-align: left;
   border-bottom: 2px solid #ccc;
   border-right: 2px solid #ccc;
@@ -106,6 +106,7 @@
 
 .data-table td {
   font-size: 13px;
+  line-height: 1.1;
 }
 
 .data-table th {
@@ -114,6 +115,7 @@
   color: #333;
   border-bottom: 3px solid #999;
   font-size: 14px;
+  line-height: 1.1;
 }
 
 .data-table tbody tr:hover {
@@ -150,26 +152,26 @@
 
   .data-table th,
   .data-table td {
-    padding: 3px 4px;
+    padding: 2px 3px;
     white-space: normal;
     word-break: break-word;
   }
 
   .data-table th {
     font-size: 11px;
-    line-height: 1.15;
+    line-height: 1.05;
   }
 
   .data-table td {
     font-size: 11px;
-    line-height: 1.15;
+    line-height: 1.05;
   }
 
   .data-table th:nth-child(1),
   .data-table td:nth-child(1) {
     width: 24%;
-    padding-left: 3px;
-    padding-right: 3px;
+    padding-left: 2px;
+    padding-right: 2px;
   }
 
   .data-table th:nth-child(2),
