@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { useReactTable, getCoreRowModel, createColumnHelper } from '@tanstack/react-table';
 import TimeAgo from 'react-timeago';
-import { BOWLERS_SHEET_URL, FEMALE_AVERAGE_THRESHOLD, MALE_AVERAGE_THRESHOLD, MALE_MAX_HANDICAP, FEMALE_MAX_HANDICAP, REFRESH_INTERVAL } from './Data';
+import { BOWLERS_SHEET_URL, REFRESH_INTERVAL } from './Data';
 import pinfinityLogo from './pinfinity.png';
 import './App.css';
 
@@ -68,23 +68,11 @@ function App() {
         const statusIcon = active ? '🟢' : '🔴';
         const bowlerName = (row.Bowler || row.bowler || '').replace(/\s+/g, ' ').trim();
         
-        // Calculate average from total score and games
+        // Read stats directly from sheet
         const totalGames = parseInt(row['Total Games'] || row['total games'] || 0);
         const totalScore = parseInt(row['Total Score'] || row['total score'] || 0);
-        const average = totalGames > 0 ? Math.floor(totalScore / totalGames) : 0;
-        
-        // Calculate handicap based on gender
-        let hdcp = 0;
-        if (normalizedGender === 'M') {
-          hdcp = Math.floor((MALE_AVERAGE_THRESHOLD - Math.floor(average))*0.5);
-          hdcp = Math.max(0, hdcp);
-          hdcp = Math.min(MALE_MAX_HANDICAP, hdcp);
-        }
-        else {
-          hdcp = Math.floor((FEMALE_AVERAGE_THRESHOLD - Math.floor(average))*0.5);
-          hdcp = Math.max(0, hdcp);
-          hdcp = Math.min(FEMALE_MAX_HANDICAP, hdcp);
-        }
+        const average = parseInt(row.Average || row.average || 0) || 0;
+        const hdcp = parseInt(row.Hdcp || row.HDCP || row.hdcp || 0) || 0;
         
         return {
           bowler: `${statusIcon}\u00A0\u00A0${bowlerName}`,
