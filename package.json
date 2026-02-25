@@ -1,6 +1,6 @@
 {
   "name": "pinfinity-tampines-wed",
-  "version": "0.1.0",
+  "version": "2026.0225.2",
   "private": true,
   "homepage": "https://finnicus.github.io/pinfinity-tampines-wed",
   "dependencies": {
@@ -23,6 +23,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "version:auto": "node scripts/auto-version.js",
+    "predeploy": "npm run version:auto && npm run build",
     "deploy": "gh-pages -d build"
   },
   "eslintConfig": {

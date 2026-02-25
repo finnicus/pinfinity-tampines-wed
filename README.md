@@ -65,6 +65,13 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/a
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
+## Versioning
+
+- Version format is `year.mmdd.minor` (example: `2026.0225.3`).
+- Every `npm run deploy` now auto-increments `minor` for the current day.
+- On a new day, `minor` resets to `1` automatically.
+- Manual trigger (without deploy): `npm run version:auto`.
+
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
