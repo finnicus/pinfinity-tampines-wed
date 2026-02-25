@@ -36,3 +36,83 @@
     transform: rotate(360deg);
   }
 }
+
+/* Header Styles */
+.hero {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.hero-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Table Styles */
+.table-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 20px auto;
+  padding: 0 20px;
+  overflow-x: auto;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.data-table th,
+.data-table td {
+  padding: 4px 6px;
+  text-align: left;
+  border-bottom: 2px solid #ccc;
+  border-right: 2px solid #ccc;
+}
+
+.data-table td {
+  font-size: 13px;
+}
+
+.data-table th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+  color: #333;
+  border-bottom: 3px solid #999;
+  font-size: 14px;
+}
+
+.data-table tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+.data-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.data-table th:last-child,
+.data-table td:last-child {
+  border-right: none;
+}
+
+/* Column widths based on content */
+.data-table th:nth-child(1), .data-table td:nth-child(1) { width: 100px; } /* Bowler */
+.data-table th:nth-child(2), .data-table td:nth-child(2) { width: 50px; }  /* Handicap */
+.data-table th:nth-child(3), .data-table td:nth-child(3) { width: 50px; }  /* Games */
+.data-table th:nth-child(4), .data-table td:nth-child(4) { width: 50px; }  /* Total */
+.data-table th:nth-child(5), .data-table td:nth-child(5) { width: 50px; }  /* Average */
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .table-container.desktop {
+    display: none;
+  }
+}
