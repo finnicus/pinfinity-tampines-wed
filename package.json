@@ -1,8 +1,8 @@
 {
-  "name": "pinfinity-tampines-wednesday",
+  "name": "pinfinity-tampines-wed",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://finnicus.github.io/pinfinity-tampines-wednesday",
+  "homepage": "https://finnicus.github.io/pinfinity-tampines-wed",
   "dependencies": {
     "@mantine/core": "^8.3.15",
     "@mantine/hooks": "^8.3.15",
