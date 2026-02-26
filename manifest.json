@@ -1,6 +1,6 @@
 {
-  "short_name": "Pinfinity Tampines Wednesday",
-  "name": "Pinfinity Tampines Wednesday",
+  "short_name": "Bowling Roster",
+  "name": "Bowling League Roster and Statistics",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,12 +8,12 @@
       "type": "image/x-icon"
     },
     {
-      "src": "pinfinity.png",
+      "src": "generic.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "pinfinity.png",
+      "src": "generic.png",
       "type": "image/png",
       "sizes": "512x512"
     }
