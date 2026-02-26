@@ -58,9 +58,9 @@ function App() {
 
   useEffect(() => {
     document.title = appConfig.title;
-    setDocumentIcon(logoSrc, 'icon');
-    setDocumentIcon(logoSrc, 'apple-touch-icon');
-  }, [appConfig.title, logoSrc]);
+    setDocumentIcon(genericLogo, 'icon');
+    setDocumentIcon(genericLogo, 'apple-touch-icon');
+  }, [appConfig.title]);
 
   return (
     <div className="app">
