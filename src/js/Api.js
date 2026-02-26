@@ -99,7 +99,13 @@ const parseCSV = (csvText) => {
 };
 
 export const getAppConfigFromURL = (search = '') => {
-  const query = new URLSearchParams(search);
+  const rawSearch = String(search || '').trim();
+  const normalizedSearch = rawSearch
+    ? (rawSearch.startsWith('?')
+      ? rawSearch
+      : (rawSearch.includes('?') ? rawSearch.slice(rawSearch.indexOf('?')) : rawSearch))
+    : '';
+  const query = new URLSearchParams(normalizedSearch);
   const leagueParam = (query.get('league') || '').trim().toLowerCase();
   const viewParam = (query.get('view') || DEFAULT_VIEW).trim().toLowerCase();
   const league = leagueParam || DEFAULT_LEAGUE;

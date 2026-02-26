@@ -7,7 +7,7 @@ import Suggestion from './Suggestion';
 import genericLogo from '../logo/generic.png';
 import '../css/App.css';
 
-const getLogoSrc = (logoName) => {
+export const getLogoSrc = (logoName) => {
   const normalizedLogo = String(logoName || '').trim().toLowerCase();
   if (!normalizedLogo) return genericLogo;
 
@@ -28,8 +28,13 @@ const setDocumentIcon = (href, rel) => {
   iconTag.setAttribute('href', href);
 };
 
+const getLocationQuery = () => {
+  if (window.location.search) return window.location.search;
+  return window.location.hash || '';
+};
+
 function App() {
-  const initialConfig = useMemo(() => getAppConfigFromURL(window.location.search), []);
+  const initialConfig = useMemo(() => getAppConfigFromURL(getLocationQuery()), []);
   const [appConfig, setAppConfig] = useState(initialConfig);
   const logoSrc = useMemo(() => getLogoSrc(appConfig.logo || appConfig.league), [appConfig.logo, appConfig.league]);
   const [loading, setLoading] = useState(true);
@@ -40,7 +45,7 @@ function App() {
 
     const hydrateConfig = async () => {
       try {
-        const resolvedConfig = await fetchAppConfigFromURL(window.location.search);
+        const resolvedConfig = await fetchAppConfigFromURL(getLocationQuery());
         if (!cancelled) {
           setAppConfig(resolvedConfig);
         }

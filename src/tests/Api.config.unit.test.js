@@ -35,6 +35,22 @@ describe('app config helpers', () => {
     expect(aliasConfig).toEqual(config);
   });
 
+  test('getAppConfigFromURL uses tessensohn logo when league is in query string', () => {
+    const config = getAppConfigFromURL('?league=tessensohn');
+
+    expect(config.league).toBe('tessensohn');
+    expect(config.logo).toBe('tessensohn');
+    expect(config.useDummyData).toBe(false);
+  });
+
+  test('getAppConfigFromURL reads league from hash fragment format', () => {
+    const config = getAppConfigFromURL('#/?league=tessensohn');
+
+    expect(config.league).toBe('tessensohn');
+    expect(config.logo).toBe('tessensohn');
+    expect(config.useDummyData).toBe(false);
+  });
+
   test('fetchAppConfigFromURL returns base config for dummy league without network call', async () => {
     const config = await fetchAppConfigFromURL('?league=dummy');
 
