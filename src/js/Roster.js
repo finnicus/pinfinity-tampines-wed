@@ -143,6 +143,7 @@ function Roster({ appConfig }) {
               hdcp: Number(bowler.hdcp) || 0,
               average: Number(bowler.average) || 0,
               totalGames: Number(bowler.totalGames) || 0,
+              totalScore: Number(bowler.totalScore) || 0,
             };
             return acc;
           }, {});
@@ -191,6 +192,7 @@ function Roster({ appConfig }) {
       hdcp: -1,
       average: Number.MAX_SAFE_INTEGER,
       totalGames: Number.MAX_SAFE_INTEGER,
+      totalScore: Number.MAX_SAFE_INTEGER,
     }
   );
 
@@ -201,11 +203,14 @@ function Roster({ appConfig }) {
     const hdcpDiff = statsB.hdcp - statsA.hdcp;
     if (hdcpDiff !== 0) return hdcpDiff;
 
+    const averageDiff = statsA.average - statsB.average;
+    if (averageDiff !== 0) return averageDiff;
+
     const gamesDiff = statsA.totalGames - statsB.totalGames;
     if (gamesDiff !== 0) return gamesDiff;
 
-    const averageDiff = statsA.average - statsB.average;
-    if (averageDiff !== 0) return averageDiff;
+    const scoreDiff = statsA.totalScore - statsB.totalScore;
+    if (scoreDiff !== 0) return scoreDiff;
 
     return sortByName(entryA, entryB);
   };
@@ -259,11 +264,12 @@ function Roster({ appConfig }) {
    *
     * Confirmed ranking rule:
     * - Lower handicap appears lower on the list.
-    * - If handicap ties, higher games played appears lower.
-    * - If handicap and games tie, higher average appears lower.
+      * - If handicap ties, higher average appears lower.
+      * - If handicap and average tie, higher games played appears lower.
+      * - If handicap, average, and games tie, higher score appears lower.
     *
    * Plain-language summary:
-    * - People who said "yes" appear first, but are ranked by handicap/games/average.
+    * - People who said "yes" appear first, but are ranked by handicap/average/games/score.
    * - People still pending appear next.
    * - Reserves come after the main group.
    * - If the main group has fewer than 3 players, we add suggested names.

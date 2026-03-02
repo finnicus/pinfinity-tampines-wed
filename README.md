@@ -92,8 +92,9 @@ The roster card in `Roster.js` is displayed in grouped order:
 Confirmed bowlers are not alphabetical. They are sorted by these tie-break rules:
 
 1. Lower `Hdcp` appears lower in the list (higher `Hdcp` appears first)
-2. If `Hdcp` is tied, higher `Total Games` appears lower in the list
-3. If both `Hdcp` and `Total Games` are tied, higher `Average` appears lower in the list
+2. If `Hdcp` is tied, higher `Average` appears lower in the list
+3. If `Hdcp` and `Average` are tied, higher `Total Games` appears lower in the list
+4. If `Hdcp`, `Average`, and `Total Games` are tied, higher `Total Score` appears lower in the list
 
 This keeps ordering deterministic while following team selection preference for confirmed players.
 
