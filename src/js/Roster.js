@@ -172,14 +172,6 @@ function Roster({ appConfig }) {
     return `${day}/${month}/${year}`;
   };
 
-  const getEntryStats = (entry) => (
-    bowlerStatsByName[normalizeBowlerName(entry.name).toLowerCase()] || {
-      hdcp: -1,
-      average: Number.MAX_SAFE_INTEGER,
-      totalGames: -1,
-    }
-  );
-
   const sortByName = (entryA, entryB) => normalizeBowlerName(entryA.name).localeCompare(normalizeBowlerName(entryB.name));
 
   const pickSuggestedMainBowlers = (card, missingCount) => {
