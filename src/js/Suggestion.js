@@ -4,7 +4,6 @@ import { fetchData, fetchExceptionsData, fetchRosterData, fetchSettingsData } fr
 const SG_TIME_ZONE = 'Asia/Singapore';
 const SLOT_ORDER = ['A', 'B', 'C', 'Reserved'];
 const MAIN_SLOT_ORDER = ['A', 'B', 'C'];
-const STATUS_CONFIRMED = 'YES';
 const STATUS_EXCEPTION = 'EXCEPTION';
 const GROUP_A_NAMES = new Set(['dan', 'bernard', 'jacob', 'daniel']);
 const WILLIAM_NAME = 'william';
