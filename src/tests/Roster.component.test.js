@@ -157,10 +157,10 @@ describe('Roster', () => {
     const table = screen.getByRole('table', { name: 'Bowlers for 08/Jan/2099' });
     const nameCells = Array.from(table.querySelectorAll('td.roster-item-name')).map((cell) => cell.textContent);
 
-    expect(nameCells).toEqual(['Alice', 'Bob (Reserve)', '💡 Carol', '💡 Derek', 'Ethan']);
+    expect(nameCells).toEqual(['Alice', 'Bob (Reserve)', 'Carol', 'Derek', 'Ethan']);
     expect(within(table).getAllByLabelText('suggested')).toHaveLength(2);
-    expect(within(table).getByText('Bob (Reserve)').closest('tr').nextElementSibling).toHaveTextContent('💡 Carol');
-    expect(within(table).getByText('💡 Derek').closest('tr').nextElementSibling).toHaveClass('roster-item-exceptions-label');
+    expect(within(table).getByText('Bob (Reserve)').closest('tr').nextElementSibling).toHaveTextContent('Carol');
+    expect(within(table).getByText('Derek').closest('tr').nextElementSibling).toHaveClass('roster-item-exceptions-label');
   });
 
   test('orders confirmed mains by hdcp, then average, then games, then score; pending stays alphabetical', async () => {

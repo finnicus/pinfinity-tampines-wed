@@ -332,7 +332,7 @@ function Roster({ appConfig }) {
                   const stats = bowlerStatsByName[normalizeBowlerName(entry.name).toLowerCase()] || { hdcp: '-' };
                   const displayName = entry.isReserve
                     ? `${entry.name} (Reserve)`
-                    : (entry.isSuggestion ? `💡 ${entry.name}` : entry.name);
+                    : entry.name;
                   const statusText = getEntryStatusText(entry);
                   const isException = isExceptionEntry(entry);
                   const isSuggestion = statusText === 'SUGGESTED' || entry.isSuggestion;
