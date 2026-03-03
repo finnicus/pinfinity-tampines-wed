@@ -33,6 +33,9 @@ const getLocationQuery = () => {
   return window.location.hash || '';
 };
 
+const AUTO_REFRESH_MS = 30 * 60 * 1000;
+const USER_ACTIVITY_EVENTS = ['mousemove', 'keydown', 'click', 'touchstart', 'scroll'];
+
 function App() {
   const initialConfig = useMemo(() => getAppConfigFromURL(getLocationQuery()), []);
   const [appConfig, setAppConfig] = useState(initialConfig);
@@ -66,6 +69,41 @@ function App() {
     setDocumentIcon(genericLogo, 'icon');
     setDocumentIcon(genericLogo, 'apple-touch-icon');
   }, [appConfig.title]);
+
+  useEffect(() => {
+    let refreshTimer;
+    let lastActivityAt = Date.now();
+
+    const scheduleRefreshCheck = (delayMs) => {
+      refreshTimer = window.setTimeout(() => {
+        const idleDuration = Date.now() - lastActivityAt;
+
+        if (idleDuration >= AUTO_REFRESH_MS) {
+          window.location.reload();
+          return;
+        }
+
+        scheduleRefreshCheck(AUTO_REFRESH_MS - idleDuration);
+      }, delayMs);
+    };
+
+    const markActivity = () => {
+      lastActivityAt = Date.now();
+    };
+
+    USER_ACTIVITY_EVENTS.forEach((eventName) => {
+      document.addEventListener(eventName, markActivity, { passive: true });
+    });
+
+    scheduleRefreshCheck(AUTO_REFRESH_MS);
+
+    return () => {
+      window.clearTimeout(refreshTimer);
+      USER_ACTIVITY_EVENTS.forEach((eventName) => {
+        document.removeEventListener(eventName, markActivity);
+      });
+    };
+  }, []);
 
   return (
     <div className="app">
